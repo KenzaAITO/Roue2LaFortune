@@ -22,6 +22,7 @@ class CircularLED
   volatile uint8_t *PORT_Data;
   volatile uint8_t *PORT_Clk;
   CircularLED(int data, int clk, int intensity);
+  CircularLED(int data, int clk);
   void ClearDisplay(void);
   void CircularLEDWrite(unsigned int data[24]);
   //uint32_t countOfLed();

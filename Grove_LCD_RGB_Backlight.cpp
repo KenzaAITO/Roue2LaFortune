@@ -69,7 +69,6 @@ void Grove_LCD_RGB_Backlight::print(char *str)
 
 }
 
-
 /*This function sets where on the screen the text will be written next.  It 
 takes in two values which indicate the row and column on the display that 
 the cursor should be moved to*/
