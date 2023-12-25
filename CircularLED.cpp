@@ -9,11 +9,6 @@ const int LIMIT = 192;
 
 CircularLED::CircularLED( int data,  int clk, int intensity): _data(data), _clk(clk), _intensity(intensity)
 {
-    //pinMode(_data, OUTPUT);  
-    //pinMode(_clk, OUTPUT);  
-    //PORT_Data = portOutputRegister(digitalPinToPort(_data));
-    //PORT_Clk = portOutputRegister(digitalPinToPort(_clk));
-
     if ( (0<=_data) && (_data<=7) ){
 	    BIT_Data = (0x01<<(_data));
     }
@@ -34,38 +29,6 @@ CircularLED::CircularLED( int data,  int clk, int intensity): _data(data), _clk(
 	    BIT_Clk = (0x01<<(_clk-14));
     }
 }
-     //PORT_Data = &PORTD;
-    // BIT_Data = (0x01<<(_data));
-    //}
-    /*
-    else if ((8<=_data)&&(_data<=13))
-    {
-     DDR_Data = &DDRB;
-     PORT_Data = &PORTB;
-     BIT_Data = (0x01<<(_data-8));
-    }
-    else
-    {
-    DDR_Data = &DDRC;
-    PORT_Data = &PORTC;
-    BIT_Data = (0x01<<(_data-14));
-    }
-    *
-    #if ((0<=_clk)&&(_clk<=7))
-    #define DDR_Clk  DDRD
-    #define PORT_Clk  PORTD
-    #define BIT_Clk  (0x01<<(_clk))
-
-    # else if ((8<=_clk)&&(_clk<=13))
-    #define DDR_Clk  DDRB
-    #define PORT_Clk  PORTB
-    #define BIT_Clk  (0x01<<(_clk-8))
-
-    #else 
-    #define DDR_Clk  DDRC
-    #define PORT_Clk  PORTC
-    #define BIT_Clk  (0x01<<(_clk-14))
-    */
 
 
 void CircularLED::Sent16bit(unsigned int data)
@@ -83,15 +46,8 @@ void CircularLED::Sent16bit(unsigned int data)
   }
 }
 
-
 void CircularLED::CircularLEDWrite(unsigned int data[nbLeds])
 {
-  //DDR_Data |= BIT_Data;
-  //DDR_Clk |= BIT_Clk;
-  //pinMode(_data, OUTPUT);  
-  //pinMode(_clk, OUTPUT);  
-  //PORT_Data &=~ BIT_Data;
-  //PORT_Clk &=~ BIT_Clk;
     unsigned char count=0;
     Sent16bit(CmdMode);  
     for(count=0;count<12;count++){

@@ -8,8 +8,8 @@
 
 #define  USER_BUTTON PC_13
 
-CircularLED circularLED1(D10,D9); 
-Grove_LCD_RGB_Backlight rgbLCD(D14, D15);
+CircularLED circularLED1(10,9); 
+Grove_LCD_RGB_Backlight rgbLCD(D14, D15); //D14 et D15 sont les ports SCL et SDA connecté à l'ecran
 DigitalIn button(USER_BUTTON);
 
 unsigned int LED[24];
@@ -17,8 +17,8 @@ int k=0;
 
 int main()
 {
-    int i;
-   rgbLCD.setRGB(0xff, 0xff, 0xff);                 //set the color 
+   int i;
+   rgbLCD.setRGB(0xff, 0xff, 0xff);//set couleur 
    rgbLCD.print("Mini Projet C++");
    rgbLCD.locate(0,1);
    rgbLCD.print("Appuyez sur le Bouton pour commencer");

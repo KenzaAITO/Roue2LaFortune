@@ -2,6 +2,8 @@
 #include "CircularLED.h"
 #include "mbed.h"
 
+CircularLED circularLED1(10,9); 
+const int tailleTab = 23 ; //nombre d'elemnt dans le tableau un element correspond au nombre de LEDs
 void spinWheel() {
     // Exemple de code pour faire tourner la roue de la fortune
 
@@ -17,13 +19,13 @@ void spinWheel() {
             int result = sequence[i];
 
             // Allumez la LED correspondant au résultat
-            circularLED.setLED(result, true);
+            circularLED1.setLED(result, true);
 
             // Attendez un court instant pour créer l'effet de rotation
             ThisThread::sleep_for(100ms);
 
             // Éteignez toutes les LEDs
-            circularLED.setAllOff();
+            circularLED1.setAllOff();
 
         }
     }
@@ -40,7 +42,19 @@ void spinWheel() {
 
 
 void displayResult(int result) {
-    // Code pour afficher le résultat sur l'écran LCD RGB ici
-    // Ajoutez le code nécessaire pour communiquer avec votre écran LCD RGB
-    // Utilisez les broches appropriées et les commandes spécifiques à votre écran
+    //Afficher le résultat sur l'écran LCD
+    int tab[tailleTab] = {1, 30, 40, 3000, 0, 50, 200, 15, -24, 67, 500, 20, 0, 1000, 5, 80, 10, -50, 36 ,0 , 700, 10000 , 9999, 2};
+    if (result < tailleTab){
+        int res = tab[result];
+        rgbLCD.locate(0,1);
+        rgbLCD.print("Vous avez gagné");
+
+        char *empty = {};
+        empty[0] = res;
+        rgbLCD.print(empty);
+    }
+    else{
+        rgbLCD.locate(0,1);
+        rgbLCD.print("Une erreur est survenue");
+    }
 }
